@@ -34,10 +34,6 @@ jobs:
             cd home
             touch provafile
             
-      - name: Checkout the files
-        uses: actions/checkout@v2
-        with:
-          ref: develop
 
       - name: Copy files to remote server using SCP
         uses: appleboy/ssh-action@master
