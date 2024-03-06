@@ -46,4 +46,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-           scp -i  ${{ secrets.EC2_SSH_KEY }} github/workspace/Prova-SSH/theme  ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/html/wp-content/themes/
+           scp -i  ${{ secrets.EC2_SSH_KEY }} -r /github/workspace/Prova-SSH/theme ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/html/wp-content/themes/
