@@ -23,6 +23,12 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
 
+      - name: Check out code from develop branch
+        uses: actions/checkout@v2
+        with:
+          ref: develop
+          path: Prova-SSH
+
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
@@ -30,9 +36,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd home
-            touch provafile
-            cd ec2-user
-            mkdir Roberto
-            touch rr.txt
-            
+           scp -r Prova-SSH/theme/ ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/html/wp-content/themes
