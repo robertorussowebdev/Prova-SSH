@@ -19,8 +19,8 @@ jobs:
       
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ec2-user@18.184.245.68 '
+          ssh -o StrictHostKeyChecking=no -i private_key ec2-user@18.184.245.68 
 
-              # Now we have got the access of EC2 and we will start the deploy .
+              # Now we have got the access of EC2 and we will start the deploy
               touch provacartella
               
