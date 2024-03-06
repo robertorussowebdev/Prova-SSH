@@ -42,4 +42,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+           git clone https://github.com/robertorussowebdev/Prova-SSH/
            scp -i  ${{ secrets.EC2_SSH_KEY }} -r /github/workspace/Prova-SSH/theme ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/html/wp-content/themes/
