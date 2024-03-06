@@ -32,4 +32,4 @@ jobs:
           script: |
             cd home
             touch provafile
-            scp -r Prova-SSH/theme/ ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/html/wp-content/themes
+            cp -r Prova-SSH/theme/ ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/html/wp-content/themes
