@@ -46,5 +46,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            git clone https://github.com/robertorussowebdev/Prova-SSH/ --single-branch --branch develop Prova-SSH/theme/
-            mv theme /var/www/html/wp-content/themes/
+           touch sticazzi
