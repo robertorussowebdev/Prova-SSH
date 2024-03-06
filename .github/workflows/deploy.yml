@@ -32,3 +32,7 @@ jobs:
           script: |
             cd home
             touch provafile
+            cd ec2-user
+            mkdir Roberto
+            touch rr.txt
+            
