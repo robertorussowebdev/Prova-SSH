@@ -1,21 +1,21 @@
 name: Push-to-EC2
 
-# Trigger deployment only on push to main branch
+# Trigger deployment only on push to develop branch
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
-  deploy:
-    name: Deploy to EC2 on master branch push
+  deploy_develop:
+    name: Deploy to EC2 on develop branch push
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
 
-      - name: Deploy to Server 1
+      - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
@@ -30,9 +30,16 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd home
+            cd /home
             touch provafile
-            cd ec2-user
-            mkdir Roberto
-            touch rr.txt
-            
+
+      - name: Copy files to remote server using SCP
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /home/ec2-user
+            git clone https://github.com/robertorussowebdev/Prova-SSH/
+            mv /home/ec2-user/Prova-SSH/theme/ /var/www/html/wp-content/themes
